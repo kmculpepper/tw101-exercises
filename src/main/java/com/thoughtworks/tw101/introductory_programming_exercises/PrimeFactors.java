@@ -11,7 +11,12 @@ import java.util.List;
 
 public class PrimeFactors {
     public static void main(String[] args) {
-        List<Integer> primeFactors = generate(30);
+        int numberToGeneratePrimeFactorsFor = 30;
+        List<Integer> primeFactors = generate(numberToGeneratePrimeFactorsFor);
+        System.out.println("Prime factors for " + numberToGeneratePrimeFactorsFor + ": ");
+        for(Integer primeFactor : primeFactors){
+            System.out.println(primeFactor);
+        }
     }
 
     private static List<Integer> generate(int n) {

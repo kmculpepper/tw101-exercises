@@ -13,14 +13,17 @@ public class DiamondExercises {
 //             ***
 //            *****
     private static void drawAnIsoscelesTriangle(int n) {
-        for(int i = 0; i < n; ++i){
-            for(int j = i + 1; j < n; ++j){
+        int curLevel = 1;
+        while(curLevel <= n){
+            for(int i = curLevel; i < n; ++i){
                 System.out.print(' ');
             }
-            for(int j = i * 2 + 1; j > 0; --j){
+            int numOfAsterisks = getNumAsterisksForLevel(curLevel);
+            for(int i = 0; i < numOfAsterisks; ++i){
                 System.out.print('*');
             }
             System.out.println();
+            ++curLevel;
         }
     }
 
@@ -32,23 +35,21 @@ public class DiamondExercises {
 //             ***
 //              *
     private static void drawADiamond(int n) {
-        for(int i = 0; i < n; ++i){
-            for(int j = i + 1; j < n; ++j){
+        int incrementBy = 1;
+        int curLevel = 1;
+        while(curLevel > 0){
+            for(int i = curLevel; i < n; ++i){
                 System.out.print(' ');
             }
-            for(int j = i * 2 + 1; j > 0; --j){
+            int numOfAsterisks = getNumAsterisksForLevel(curLevel);
+            for(int i = 0; i < numOfAsterisks; ++i){
                 System.out.print('*');
             }
             System.out.println();
-        }
-        for(int i = n - 2; i > -1; --i){
-            for(int j = i + 1; j < n; ++j){
-                System.out.print(' ');
+            if(curLevel == n){
+                incrementBy = -1;
             }
-            for(int j = i * 2 + 1; j > 0; --j){
-                System.out.print('*');
-            }
-            System.out.println();
+            curLevel += incrementBy;
         }
 
     }
@@ -62,24 +63,30 @@ public class DiamondExercises {
 //            ***
 //             *
     private static void drawADiamondWithYourName(int n) {
-        for(int i = 0; i < n - 1; ++i){
-            for(int j = i + 1; j < n; ++j){
-                System.out.print(' ');
+        int incrementBy = 1;
+        int curLevel = 1;
+        while(curLevel > 0){
+            if(curLevel == n){
+                System.out.println("Kayla");
+                incrementBy = -1;
             }
-            for(int j = i * 2 + 1; j > 0; --j){
-                System.out.print('*');
+            else {
+                for (int i = curLevel; i < n; ++i) {
+                    System.out.print(' ');
+                }
+                int numOfAsterisks = getNumAsterisksForLevel(curLevel);
+                for (int i = 0; i < numOfAsterisks; ++i) {
+                    System.out.print('*');
+                }
+                System.out.println();
             }
-            System.out.println();
+            curLevel += incrementBy;
         }
-        System.out.println("Kayla");
-        for(int i = n - 2; i > -1; --i){
-            for(int j = i + 1; j < n; ++j){
-                System.out.print(' ');
-            }
-            for(int j = i * 2 + 1; j > 0; --j){
-                System.out.print('*');
-            }
-            System.out.println();
-        }
+    }
+
+    private static int getNumAsterisksForLevel(int curLevel){
+        // Number of asterisks is equal to 2x the triangle level, with the top
+        // level being 1, plus one asterisk for the center
+        return (curLevel - 1) * 2 + 1;
     }
 }

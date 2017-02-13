@@ -33,16 +33,18 @@ public class FizzBuzz {
 
     private static void fizzBuzz() {
         final int MIN_NUM_IN_RANGE = 1,
-                  MAX_NUM_IN_RANGE = 100;
+                  MAX_NUM_IN_RANGE = 100,
+                  NUM_FOR_FIZZ = 3,
+                  NUM_FOR_BUZZ = 5;
 
-        for(int i = MIN_NUM_IN_RANGE; i < MAX_NUM_IN_RANGE + 1; ++i){
-            if(i % 3 == 0 && i % 5 == 0){
+        for(int i = MIN_NUM_IN_RANGE; i <= MAX_NUM_IN_RANGE; ++i){
+            if(i % NUM_FOR_FIZZ == 0 && i % NUM_FOR_BUZZ == 0){
                 System.out.println("FizzBuzz");
             }
-            else if(i % 3 == 0){
+            else if(i % NUM_FOR_FIZZ == 0){
                 System.out.println("Fizz");
             }
-            else if(i % 5 == 0){
+            else if(i % NUM_FOR_BUZZ == 0){
                 System.out.println("Buzz");
             }
             else{
