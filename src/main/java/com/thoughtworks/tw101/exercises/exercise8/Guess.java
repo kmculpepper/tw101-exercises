@@ -14,46 +14,51 @@ public class Guess {
     private PrintStream output,
             error;
     private boolean guessedCorrectly;
-    private int minGuess,
-            maxGuess;
-    private int correctAnswer;
+    private final int MIN_GUESS,
+            MAX_GUESS;
+    private final int CORRECT_ANSWER;
     private ArrayList<Integer> listOfGuesses;
 
-    public Guess(BufferedReader input, PrintStream output, PrintStream error, int minGuess, int maxGuess) {
+    public Guess(BufferedReader input, PrintStream output, PrintStream error,
+                 final int MIN_GUESS, final int MAX_GUESS) {
         this.input = input;
         this.output = output;
         this.error = error;
-        this.minGuess = minGuess;
-        this.maxGuess = maxGuess;
+        this.MIN_GUESS = MIN_GUESS;
+        this.MAX_GUESS = MAX_GUESS;
         guessedCorrectly = false;
         listOfGuesses = new ArrayList<>();
 
         //Add one to the seed and to the randomly generated integer to make the min bound exclusive
-        correctAnswer = new Random().nextInt(maxGuess - minGuess + 1) + minGuess + 1;
+        CORRECT_ANSWER = new Random().nextInt(MAX_GUESS - MIN_GUESS + 1) + MIN_GUESS + 1;
     }
 
     public boolean isRight() {
         return guessedCorrectly;
     }
 
+    private void checkAndLogGuess(int guess){
+        if(guess <= MIN_GUESS || MAX_GUESS <= guess){
+            error.println("When guessing, please choose a number between 1 and 100.");
+        }
+        else {
+            listOfGuesses.add(guess);
+            if (guess > CORRECT_ANSWER) {
+                output.println("Too high! Please try again.");
+            } else if (guess < CORRECT_ANSWER) {
+                output.println("Too low! Please try again.");
+            } else {
+                output.println("CORRECT! You did it!");
+                guessedCorrectly = true;
+            }
+        }
+    }
+
     public void guess() {
         output.print("Please enter your guess: ");
         try{
             int guess = Integer.parseInt(input.readLine());
-            if(guess <= minGuess || maxGuess <= guess){
-                error.println("When guessing, please choose a number between 1 and 100.");
-            }
-            else {
-                listOfGuesses.add(guess);
-                if (guess > correctAnswer) {
-                    output.println("Too high! Please try again.");
-                } else if (guess < correctAnswer) {
-                    output.println("Too low! Please try again.");
-                } else {
-                    output.println("CORRECT! You did it!");
-                    guessedCorrectly = true;
-                }
-            }
+            checkAndLogGuess(guess);
         } catch (IOException e) {
             e.printStackTrace();
         }

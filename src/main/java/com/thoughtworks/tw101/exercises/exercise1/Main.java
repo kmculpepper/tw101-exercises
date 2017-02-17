@@ -4,26 +4,17 @@ package com.thoughtworks.tw101.exercises.exercise1;
 
 public class Main {
     public static void main(String[] args) {
-        /**
-         * NUM_START - the lower bound of the range we will be incrementing over
-         * NUM_INCREMENT - the amount to increment over the range of numbers
-         * NUM_END - the upper bound of the range we will be incrementing over
-         */
-        final int NUM_START = 1, NUM_INCREMENT = 2, NUM_END = 100;
+        final int LOWER_BOUND = 1, INCREMENT_AMOUNT = 2, UPPER_BOUND = 100;
 
-        /**
-         * numCurrent - the value we have currently incremented to
-         * numSum - the total sum of the values we have incremented over
-         */
-        int numCurrent = NUM_START, numSum = 0;
+        int currentValue = LOWER_BOUND, sum = 0;
 
-        System.out.println("All odd numbers from " + NUM_START + " to " + NUM_END + ":");
-        while(numCurrent < NUM_END){
-            numSum += numCurrent;
-            System.out.println(numCurrent);
-            numCurrent += NUM_INCREMENT;
+        System.out.println("All odd numbers from " + LOWER_BOUND + " to " + UPPER_BOUND + ":");
+        while(currentValue < UPPER_BOUND){
+            sum += currentValue;
+            System.out.println(currentValue);
+            currentValue += INCREMENT_AMOUNT;
         }
 
-        System.out.println("\nSum: " + numSum);
+        System.out.println("\nSum: " + sum);
     }
 }

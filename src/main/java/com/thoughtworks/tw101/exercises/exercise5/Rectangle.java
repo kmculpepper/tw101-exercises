@@ -1,8 +1,8 @@
 package com.thoughtworks.tw101.exercises.exercise5;
 
 public class Rectangle {
-    private final int length;
-    private final int width;
+    private int length;
+    private int width;
 
     public Rectangle(int length, int width) {
         this.length = length;

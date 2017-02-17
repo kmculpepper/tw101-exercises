@@ -4,8 +4,8 @@ package com.thoughtworks.tw101.exercises.exercise6;
  * Created by Kayla on 1/31/2017.
  */
 public class Troll implements Monster{
-    int hitPoints = 40;
-    final String name = "Troll";
+    private int hitPoints = 40;
+    private final String NAME = "Troll";
 
     @Override
     public void takeDamage(int amount) {
@@ -14,6 +14,6 @@ public class Troll implements Monster{
 
     @Override
     public void reportStatus() {
-        System.out.println(name + " " + hitPoints);
+        System.out.println(NAME + " " + hitPoints);
     }
 }

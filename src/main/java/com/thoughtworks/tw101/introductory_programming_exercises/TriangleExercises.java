@@ -19,11 +19,10 @@ public class TriangleExercises {
 //    Given a number n, print n asterisks on one line.
 //    Example when n=8:  ********
     private static void drawAHorizontalLine(int n) {
-        char[] horzLine = new char[n];
         for(int i = 0; i < n; ++i){
-            horzLine[i] = '*';
+            System.out.print('*');
         }
-        System.out.println(horzLine);
+        System.out.println();
     }
 
 //    Draw a vertical line
@@ -45,10 +44,10 @@ public class TriangleExercises {
 //            **
 //            ***
     private static void drawARightTriangle(int n) {
-        String output = "*";
-        while(output.length() <= n){
-            System.out.println(output);
-            output += "*";
+        String outputForCurLevelOfTriangle = "*";
+        while(outputForCurLevelOfTriangle.length() <= n){
+            System.out.println(outputForCurLevelOfTriangle);
+            outputForCurLevelOfTriangle += "*";
         }
     }
 }
